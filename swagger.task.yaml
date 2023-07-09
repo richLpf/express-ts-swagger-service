@@ -1,0 +1,213 @@
+tags:
+  - name: api
+    description: 获取前端某个项目版本API
+
+servers:
+  - url: http://localhost:3000/
+    description: 开发环境API url
+
+paths:
+  /v1/GetProjectTasks:
+    post:
+      tags:
+      - task
+      summary: "get tasks by projectId"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            $ref: '#/definitions/getProjectTask'
+          required: true
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+  /v1/CreateTask:
+    post:
+      tags:
+      - task
+      summary: "create task"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - title
+              - projectId
+            properties:
+              Action:
+                type: string
+                example: CreateTask
+              type:
+                type: number
+              title:
+                type: string
+              projectId:
+                type: number
+              priority:
+                type: number
+              startAt:
+                type: number
+              endAt:
+                type: number
+              desc:
+                type: string
+              order:
+                type: number
+              status:
+                type: number
+              progress:
+                type: number
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+  /v1/UpdateTask:
+    post:
+      tags:
+      - task
+      summary: "update task"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - id
+            properties:
+              Action:
+                type: string
+                example: UpdateTask
+              type:
+                type: number
+              title:
+                type: string
+              projectId:
+                type: number
+              priority:
+                type: number
+              startAt:
+                type: number
+              endAt:
+                type: number
+              desc:
+                type: string
+              order:
+                type: number
+              progress:
+                type: number
+              status:
+                type: number
+                enum: [0, 1, 2, 3]
+                example: 0
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+  /v1/DeleteTask:
+    post:
+      tags:
+      - task
+      summary: "delete task"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - id
+            properties:
+              Action:
+                type: string
+                example: UpdateResource
+              id:
+                type: number
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+
+# definitions
+definitions:
+  getProjectTask:
+    required:
+        - Action
+        - projectId
+    type: object
+    properties:
+      Action:
+        type: string
+        example: GetProjectTasks
+      type:
+        type: number
+      title:
+        type: string
+      priority:
+        type: number
+      startAt:
+        type: number
+      endAt:
+        type: number
+      desc:
+        type: string
+      order:
+        type: number
+      progress:
+        type: number
+      projectId: 
+        type: number
+      status:
+        type: number
+        example: 1
+
+schemes:
+ - https
+ - http

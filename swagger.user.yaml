@@ -1,0 +1,100 @@
+tags:
+  - name: api
+    description: 获取前端某个项目版本API
+
+servers:
+  - url: http://localhost:9000/
+    description: 开发环境API url
+
+paths:
+  /v1/Login:
+    post:
+      tags: 
+      - user
+      summary: "login"
+      parameters:
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - username
+              - password
+            properties:
+              Action:
+                type: string
+                example: Login
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+  /v1/Register:
+    post:
+      tags:
+      - user
+      summary: "Register"
+      description: "create a user"
+      parameters:
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - username
+              - password
+            properties:
+              Action:
+                type: string
+                example: Register
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+        default:
+          description: "Server Error"
+  /GetUserInfo:
+    post:
+      tags: 
+      - user
+      summary: "GetUserInfo"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+            properties:
+              Action:
+                type: string
+                example: GetUserInfo
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+schemes:
+ - https
+ - http

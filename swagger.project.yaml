@@ -1,0 +1,201 @@
+tags:
+  - name: api
+    description: 获取项目
+
+servers:
+  - url: http://localhost:3000/
+    description: 开发环境API url
+
+paths:
+  /v1/GetProjects:
+    post:
+      tags:
+      - project
+      summary: "get projects"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            required:
+              - Action
+              - createdUser
+            properties:
+              Action:
+                type: string
+                example: "GetProjects"
+              id:
+                type: number
+              status:
+                type: array
+                items:
+                  type: number
+              priority:
+                type: number
+              createdUser:
+                type: number
+              startAt: 
+                type: number
+              endAt:
+                type: number
+          required: true
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+
+  /v1/CreateProject:
+    post:
+      tags:
+      - project
+      summary: "create project"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+            properties:
+              Action:
+                type: string
+                example: CreateProject
+              name:
+                type: string
+              priority:
+                type: number
+              startAt:
+                type: number
+              endAt: 
+                type: number
+              progress:
+                type: number
+              parentProjectId:
+                type: number
+              desc:
+                type: string
+              order:
+                type: number
+              createdUser: 
+                type: string
+          required: true
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+
+  /v1/UpdateProject:
+    post:
+      tags:
+      - project
+      summary: "update project"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - id
+            properties:
+              Action:
+                type: string
+                example: UpdateProject
+              id:
+                type: number
+              name:
+                type: string
+              priority:
+                type: number
+              startAt:
+                type: number
+              endAt:
+                type: number
+              progress:
+                type: number
+              parentProjectId:
+                type: number
+              desc:
+                type: string
+              order:
+                type: number
+              createdUser:
+                type: string
+          required: true
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+
+  /v1/DeleteProject:
+    post:
+      tags:
+      - project
+      summary: "delete project"
+      parameters:
+        - in: header
+          name: jwtToken
+          schema:
+            type: string
+          required: true
+        - in: header
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - Action
+              - id
+            properties:
+              Action:
+                type: string
+                example: DeleteProject
+              id:
+                type: number
+          required: true
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Server Error"
+
+schemes:
+ - https
+ - http

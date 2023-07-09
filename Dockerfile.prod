@@ -1,0 +1,21 @@
+# Common build stage
+FROM node:18-alpine as common-build-stage
+
+COPY . ./app
+
+WORKDIR /app
+
+RUN npm i -g pm2 --registry=https://registry.npm.taobao.org
+RUN yarn install && yarn build
+
+# RUN npm cache clean --force && npm install pm2 -g && npm install
+
+# RUN npm prune --production
+
+EXPOSE 3000
+
+FROM common-build-stage as production-build-stage
+
+ENV NODE_ENV production
+
+CMD ["yarn", "deploy:prod"]

@@ -1,0 +1,13 @@
+tags:
+- name: user
+  description: "用户"
+# - name: projectType
+  # description: "项目分类"
+- name: project
+  description: "项目管理"
+- name: task
+  description: "任务管理"
+
+schemes:
+ - https
+ - http
