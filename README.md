@@ -20,7 +20,7 @@ TODO: 鉴于Demo项目都比较难入门，打算增加一个`Docker-compose`的
 - 同步数据库
 - 同时启动一个前端项目
 
-### 技术栈和项目环境
+### 一、技术栈和项目环境
 
 项目技术栈：
 - Express
@@ -38,26 +38,26 @@ TODO: 鉴于Demo项目都比较难入门，打算增加一个`Docker-compose`的
 - Docker Image: node:18-alpine
 - 部署环境：centos
 
-### 项目启动
+### 二、项目启动
 
 准备工作：本地安装mysql，创建对应的数据库，具体配置可以在`.env.development`
 
 1、本地启动mysql
 
-修改.env.development文件配置
+修改`.env.development`文件配置
 
 2、启动项目
 
 ```
 yarn start
 ```
-### 实现能力
+### 三、实现能力
 - 登录注册
 - 项目介绍的增删改差
 
-### 三、预发或生产环境部署
+### 四、预发或生产环境部署
 
-1、更新ecosystem.config.js生产环境数据库地址
+1、更新`ecosystem.config.js`生产环境数据库地址
 
 2、部署
 - 方式一：Docker
