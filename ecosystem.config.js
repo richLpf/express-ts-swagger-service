@@ -28,10 +28,10 @@
       env_production: {
         PORT: 7001,
         NODE_ENV: 'production',
-        DB_HOST: "101.35.8.145",
+        DB_HOST: "",
         DB_PORT: 3306,
         DB_USER: "root",
-        DB_PASSWORD: "pwHW9h1bjnhQIbKK",
+        DB_PASSWORD: "",
         DB_DATABASE: "interface"
       }
     }
