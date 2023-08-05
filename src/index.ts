@@ -1,5 +1,10 @@
 import App from './app';
-import Router from './routes/index.route';
+import userRouter from './routes/user.route';
+import questionRouter from './routes/question.route';
 
-const app = new App([new Router()]);
+const app = new App([
+    new userRouter(),
+    new questionRouter()
+]);
+
 app.listen();

@@ -7,11 +7,11 @@ servers:
     description: 开发环境API url
 
 paths:
-  /v1/Login:
+  /v1/login:
     post:
       tags: 
       - user
-      summary: "login"
+      summary: "登陆"
       parameters:
         - in: body
           name: requestBody
@@ -34,11 +34,11 @@ paths:
           description: "OK"
         500:
           description: "Server Error"
-  /v1/Register:
+  /v1/register:
     post:
       tags:
       - user
-      summary: "Register"
+      summary: "注册"
       description: "create a user"
       parameters:
         - in: body
@@ -64,11 +64,11 @@ paths:
           description: "Server Error"
         default:
           description: "Server Error"
-  /GetUserInfo:
+  /v1/getUserInfo:
     post:
       tags: 
       - user
-      summary: "GetUserInfo"
+      summary: "获取用户信息"
       parameters:
         - in: header
           name: jwtToken
